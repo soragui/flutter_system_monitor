@@ -8,14 +8,14 @@
 
 ## 为什么写这个系列？
 
-SysMonitor 是一个完整但极简的 Flutter 桌面应用。它只有 ~700 行代码，却覆盖了一个桌面应用的所有核心要素：
+SysMonitor 是一个 Flutter 桌面应用，~700 行代码，但覆盖了桌面应用的四个核心部分：
 
 - **数据采集**：解析 Linux `/proc` 文件系统，并行 I/O
-- **状态管理**：Provider + ChangeNotifier 的经典模式
-- **UI 设计**：Material 3 暗色主题、复合布局（Grid + List 混合）
+- **状态管理**：Provider + ChangeNotifier
+- **UI 设计**：Material 3 暗色主题、Grid + List 混合布局
 - **桌面集成**：原生窗口控制、系统托盘、生命周期管理
 
-这个尺度恰到好处 —— 不会大到淹没在业务逻辑里，也不会小到只是玩具。它是学习 Flutter 桌面开发的理想切片。
+700 行代码，不大到淹没在业务逻辑里，也不小到只是玩具。正好拿来学 Flutter 桌面开发。
 
 ---
 
@@ -102,4 +102,4 @@ lib/
 
 ---
 
-准备好了？从 [01 项目概述](01-project-overview.md) 开始吧。
+准备好了？从 [01 项目概述](01-project-overview.md) 开始。

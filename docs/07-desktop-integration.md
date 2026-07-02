@@ -85,7 +85,7 @@ windowManager.hide()   ← 隐藏窗口（不退出应用）
 
 **为什么这样做？**
 
-系统监控工具的价值在于"常驻"。如果关闭按钮直接退出应用，用户需要再次手动启动。最小化到托盘让应用在不占用任务栏空间的前提下持续监控系统状态。
+系统监控工具的价值在于"常驻"。关闭按钮直接退出的话，用户需要反复手动启动。最小化到托盘让应用持续监控而不占任务栏空间。
 
 ---
 
@@ -243,7 +243,7 @@ sudo apt install gnome-shell-extension-appindicator
 # Alt+F2 → 输入 r → Enter
 ```
 
-这是 GNOME 的设计选择（偏好"简洁"），不是 Flutter 或 `tray_manager` 的问题。KDE、XFCE、Cinnamon 等桌面环境都原生支持系统托盘。
+这是 GNOME 的设计选择（偏好简洁），不是 Flutter 或 `tray_manager` 的问题。KDE、XFCE、Cinnamon 等桌面环境都原生支持系统托盘。
 
 ---
 

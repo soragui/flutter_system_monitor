@@ -90,7 +90,7 @@ const CpuInfo({
 1. **编译期优化**：Dart 编译器可以在编译时分配常量对象，减少运行时内存分配
 2. **语义约束**：`const` 强制所有字段必须是 `final`，从语言层面保证不可变性
 
-> 注意：本项目中的 `SystemInfo` 实例在运行时创建（数据来自 `/proc`），所以实际不使用 `const` 实例化。但保留 `const` 构造函数是一种**防御性设计** —— 如果未来有地方需要编译期常量，它已经准备好了。
+> `const` 构造函数在本项目中主要用于语义约束。`SystemInfo` 实例在运行时创建（数据来自 `/proc`），实际不会用 `const` 实例化。保留 `const` 是防御性设计：如果未来需要编译期常量，不需要改构造函数。
 
 ### 2.3 扁平化 vs 深层嵌套
 
@@ -127,10 +127,10 @@ class CpuInfo {
 
 本项目刻意保持数据模型扁平：**每个类最多 4 个字段，只有一层嵌套**（`SystemInfo` → 具体类型）。
 
-原因：
+原因很简单：
 - 监控数据本身结构简单，不需要深层抽象
-- 扁平结构在 UI 中使用更直接：`info.cpu.usagePercent` vs `info.cpu.detail.metrics.usage.percent`
-- 过度嵌套 = 过早抽象，增加理解成本而不带来实际收益
+- 扁平结构在 UI 中直接：`info.cpu.usagePercent` vs `info.cpu.detail.metrics.usage.percent`
+- 过度嵌套 = 过早抽象，增加理解成本
 
 ---
 

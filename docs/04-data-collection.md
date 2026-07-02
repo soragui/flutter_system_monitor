@@ -7,7 +7,7 @@
 
 ## 1. 设计决策：纯 Dart，零原生插件
 
-SysMonitor 最特别的设计决策是：**不引入任何 C/C++ 原生插件来做系统监控**。
+SysMonitor 的一个关键设计决策：**不引入 C/C++ 原生插件来做系统监控**。
 
 ```dart
 // ✅ 本项目的方式 — 纯 Dart I/O
@@ -27,7 +27,7 @@ final meminfo = await File('/proc/meminfo').readAsString();
 | **原生插件** (FFI/Platform Channel) | 性能更高、可封装复杂逻辑 | 需要维护 C/C++ 代码、跨编译平台问题、链接错误难排查 |
 | **调用命令行工具** (top, free, etc.) | 简单直观 | 输出格式不稳定（各发行版不同）、解析错误多、性能差 |
 
-对于 "读取几个 /proc 文件" 这种简单任务，引入原生插件的复杂性远超其收益。Flutter 的 `dart:io` 库完全够用。
+对于"读取几个 /proc 文件"这种简单任务，引入原生插件的麻烦远超收益。Flutter 的 `dart:io` 库完全够用。
 
 ---
 
@@ -264,7 +264,7 @@ Future<String> _read(String path) async {
 - 磁盘 `df` 失败 → 返回空列表
 - 网络读取失败 → 返回空列表
 
-这不是"忽略错误"，而是 **优雅降级**：一个模块失败不影响其他模块。如果 `/proc/net/dev` 不可读（比如容器环境），用户至少还能看到 CPU/Memory/Disk 的数据。
+这不是"忽略错误"，而是**优雅降级**：一个模块失败不影响其他模块。如果 `/proc/net/dev` 不可读（比如容器环境），用户至少还能看到 CPU/Memory/Disk 的数据。
 
 ---
 

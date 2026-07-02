@@ -60,7 +60,7 @@ class CpuInfo {
 - 所有构造器都是 `const`
 - 不包含任何业务逻辑（没有方法，只有数据）
 
-> 为什么不可变？—— 因为数据从 Service 层到 UI 层是单向流动的。如果数据在中途被修改，追踪 bug 将非常困难。不可变性保证了"数据在哪里创建，就在哪里保持一致"。
+> 为什么不可变？数据从 Service 层到 UI 层是单向流动的。数据在中途被修改的话，追踪 bug 会很困难。不可变性保证数据在哪里创建就在哪里保持一致。
 
 ### 2.2 Service 层 — 数据采集
 
@@ -183,7 +183,7 @@ Linux /proc ──→ SystemMonitor ──→ DashboardProvider ──→ Consum
   (内核态)      (Service 层)      (State 层)            (UI 层)      (渲染)
 ```
 
-没有回调地狱，没有事件总线，没有全局变量。这就是分层架构的价值。
+没有回调地狱，没有事件总线，没有全局变量。分层架构让依赖方向一目了然。
 
 ---
 
@@ -228,7 +228,7 @@ class DashboardScreen extends StatefulWidget {
 3. **不可移植** — Windows/macOS 没有 `/proc`
 4. **重复代码** — 多个 Widget 需要同样的数据时，每处都读一遍
 
-SysMonitor 的分层架构恰好解决了这些问题。
+SysMonitor 的分层架构恰好解决了这四个问题。
 
 ---
 
